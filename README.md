@@ -17,7 +17,8 @@ marker(item, false) // delete marker
 
 ### trackable items
 
-- functions ( marker uids get added as props )
-- DOM nodes that implement .getAttribute/.setAttribute
-- window|document|native prototypes ( trackable but not modified )
-- other truthy objects ( marker uids get added as props )
+- **functions** ( marker uids get added as props )
+- **objects**
+  - DOM nodes that implement .getAttribute/.setAttribute
+  - window | document | native prototypes ( handled safely, untouched )
+  - other truthy objects ( marker uids get added as props )

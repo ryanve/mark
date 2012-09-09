@@ -1,5 +1,5 @@
 /*!
- * marker       Safe simple tracking for elements, objects, and functions.
+ * marker       safe simple marker system for tracking elements, objects, and functions
  * @author      Ryan Van Etten (c) 2012
  * @link        http://github.com/ryanve/marker
  * @license     MIT
@@ -43,8 +43,8 @@
         
         /**
          * marker()
-         * @param  {*}        item
-         * @param  {boolean=} op
+         * @param  {*}          item
+         * @param  {boolean=}   op
          * @return {number|undefined}
          */
         function marker (item, op) {

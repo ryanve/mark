@@ -1,5 +1,5 @@
 {
-    "name": "marker",
+    "name": "mark",
     "description": "marker system for tracking elements / objects / functions",
     "version": "0.5.0",
     "homepage": "https://github.com/ryanve/marker",

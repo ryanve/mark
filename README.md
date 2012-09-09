@@ -19,5 +19,5 @@ marker(item, false) // delete marker
 
 - DOM nodes that implement .getAttribute/.setAttribute
 - window | document | native prototypes ( handled safely, untouched )
-- Functions|Objects|Arrays ( marker uid gets added as prop )
+- Functions | Objects | Arrays ( marker uid gets added as prop )
 

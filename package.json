@@ -1,13 +1,20 @@
 {
     "name": "mark",
     "description": "marker system for tracking elements / objects / functions",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "homepage": "https://github.com/ryanve/marker",
-    "author": "Ryan Van Etten <@ryanve>",
-    "keywords": ["marker", "track", "dom", "uid", "javascript", "js"],
-    "main": "./marker.js",
+    "license": "MIT",
+    "author": "Ryan Van Etten",
+    "keywords": ["track", "tracking", "uid", "marker", "dom", "ender"],
+    "main": "./mark.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/ryanve/marker.git"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-contrib-uglify": "~0.2.4",
+        "grunt-contrib-concat": "~0.3.0",
+        "grunt-contrib-jshint": "~0.6.4"
     }
 }

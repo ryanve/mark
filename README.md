@@ -22,4 +22,4 @@ marker(item, false) // delete marker
 
 ## [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
-Copyright (C) 2013 by [Ryan Van Etten](https://github.com/ryanve)
+Copyright (C) 2012 by [Ryan Van Etten](https://github.com/ryanve)

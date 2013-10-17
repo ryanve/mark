@@ -1,24 +1,21 @@
-[mark](../../)
-======
+# [mark](../../)
 
-Safe simple tracking for elements / objects / functions.
+#### Safe unobtrusive JavaScript tracking system
 
-```
+```sh
 $ npm install mark
 ```
 
-## Usage
+## API ([0.7](../../releases))
 
 ```js
-marker(item) // Add/get marker (returns integer uid, or undefined if untrackable)
-marker(item, false) // delete marker
+mark.mark(item) // Add/get uid.
+mark.unmark(item) // Purge uid.
 ```
 
-## Trackable Items
+## Trackables
 
-- DOM nodes that implement .getAttribute/.setAttribute
-- window | document | native prototypes (handled safely, untouched)
-- Functions | Objects | Arrays (marker uid gets added as prop)
+Any object or function can be tracked. Elements are tracked via data attribute.
 
 ## [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 

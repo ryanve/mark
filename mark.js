@@ -1,5 +1,5 @@
 /*!
- * mark 0.7.0+201310190456
+ * mark 0.7.1+201310190527
  * https://github.com/ryanve/mark
  * MIT License 2013 Ryan Van Etten
  */
@@ -12,15 +12,15 @@
     var key = 'key', instances = 0;
 
     /**
-     * @this {Object}
+     * @this {Mark}
      * @param {*} needle
-     * @return {number}
+     * @return {number|undefined}
      */
     function search(needle) {
         // Search in reverse to speed access to recent items.
+        // Stop iterations at index [1] because [0] is unused.
         var i = this.length;
-        while (0 <= i--) if (i in this && needle === this[i]) return i;
-        return -1;
+        while (0 < i--) if (i in this && needle === this[i]) return i;
     }
 
     /**
@@ -35,7 +35,7 @@
             i || item.setAttribute(this[key], i=this.length++); // Make index sparse.
         } else {
             i = search.call(this, item);
-            ~i || (this[i=this.length++] = item);
+            i || (this[i=this.length++] = item); 
         }
         return i;
     }
@@ -47,12 +47,8 @@
      */
     function remit(item) {
         var i;
-        if (item && 1 === item.nodeType) { 
-            item.removeAttribute(this[key]);
-        } else {
-            i = search.call(this, item);
-            ~i && delete(this[i]);
-        }
+        if (item && 1 === item.nodeType) item.removeAttribute(this[key]);
+        else if (i = search.call(this, item)) delete(this[i]);
     }
     
     /**

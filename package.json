@@ -1,7 +1,7 @@
 {
     "name": "mark",
     "description": "unobtrusive object tracking system",
-    "version": "0.7.1",
+    "version": "0.8.0",
     "homepage": "https://github.com/ryanve/mark",
     "license": "MIT",
     "author": "Ryan Van Etten",

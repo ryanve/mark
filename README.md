@@ -6,10 +6,11 @@
 $ npm install mark
 ```
 
-## API ([0.7](../../releases))
+## API ([0.8](../../releases))
 
 ```js
 mark.mark(item) // Add/get uid.
+mark.marker(item) // Get uid.
 mark.unmark(item) // Purge uid.
 ```
 

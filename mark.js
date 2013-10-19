@@ -1,5 +1,5 @@
 /*!
- * mark 0.7.1+201310190527
+ * mark 0.8.0+201310190808
  * https://github.com/ryanve/mark
  * MIT License 2013 Ryan Van Etten
  */
@@ -13,44 +13,41 @@
 
     /**
      * @this {Mark}
-     * @param {*} needle
-     * @return {number|undefined}
+     * @param {*=} needle
+     * @return {number}
      */
     function search(needle) {
+        if (needle && 1 === needle.nodeType) return +needle.getAttribute(this[key]) || 0;
         // Search in reverse to speed access to recent items.
         // Stop iterations at index [1] because [0] is unused.
-        var i = this.length;
-        while (0 < i--) if (i in this && needle === this[i]) return i;
+        for (var i = this.length; 0 < i--;) if (i in this && needle === this[i]) return i;
+        return 0;
     }
 
     /**
      * @this {Mark}
-     * @param {*=} item
+     * @param {*=} o
      * @return {number}
      */
-    function admit(item) {
-        var i;
-        if (item && 1 === item.nodeType) {
-            i = +item.getAttribute(this[key]);
-            i || item.setAttribute(this[key], i=this.length++); // Make index sparse.
-        } else {
-            i = search.call(this, item);
-            i || (this[i=this.length++] = item); 
-        }
+    function admit(o) {
+        var i = search.call(this, o);
+        if (i) return i;
+        if (o && 1 === o.nodeType) o.setAttribute(this[key], i=this.length++); // Skip index.
+        else if (o === o) this[i=this.length++] = o; // Search only finds reflexive items.
         return i;
     }
 
     /**
      * @this {Mark}
-     * @param {*=} item
+     * @param {*=} o
      * @return {undefined}
      */
-    function remit(item) {
+    function remit(o) {
         var i;
-        if (item && 1 === item.nodeType) item.removeAttribute(this[key]);
-        else if (i = search.call(this, item)) delete(this[i]);
+        if (o && 1 === o.nodeType) o.removeAttribute(this[key]);
+        else if (i = search.call(this, o)) delete this[i];
     }
-    
+
     /**
      * @constructor
      */
@@ -60,16 +57,17 @@
     }
 
     /**
-     * @param {*=} param
+     * @param {*=} o
      * @return {Mark}
      */
-    function mark(param) {
-        return param instanceof Mark ? param : new Mark;
+    function mark(o) {
+        return o instanceof Mark ? o : new Mark;
     }
     
     mark.prototype = Mark.prototype;
     Mark.prototype['mark'] = admit;
     Mark.prototype['unmark'] = remit;
+    Mark.prototype['marker'] = search;
     
     (function(instance) {
         function bind(fn, scope) {
@@ -79,6 +77,7 @@
         }
         mark['mark'] = bind(admit, instance);
         mark['unmark'] = bind(remit, instance);
+        mark['marker'] = bind(search, instance);
     }(mark()));
 
     return mark;

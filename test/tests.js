@@ -1,6 +1,6 @@
 (function(root) {
     // browser: Open index.html in this dir.
-    // node: Run `grunt test` in git bash in the main dir.
+    // node: Run `grunt aok` in git bash in the main dir.
     var common = typeof module != 'undefined' && !!module.exports
       , mark = common ? require('../src/mark') : root.mark
       , aok = common ? require('../node_modules/aok') : root.aok

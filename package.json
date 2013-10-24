@@ -1,7 +1,7 @@
 {
     "name": "mark",
     "description": "unobtrusive object tracking system",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "homepage": "https://github.com/ryanve/mark",
     "license": "MIT",
     "author": "Ryan Van Etten",
@@ -16,6 +16,6 @@
         "grunt-contrib-uglify": "~0.2.4",
         "grunt-contrib-concat": "~0.3.0",
         "grunt-contrib-jshint": "~0.6.4",
-        "aok": "~1.4"
+        "aok": "~1.5"
     }
 }

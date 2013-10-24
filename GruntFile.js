@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        aok: ['./test/tests'],
         jshint: {
             // gruntjs.com/configuring-tasks#globbing-patterns
             // **/** matches in current and sub dirs
@@ -46,11 +47,9 @@ module.exports = function(grunt) {
             }
         }
     });
+    grunt.loadNpmTasks('aok');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.registerTask('default', ['jshint:grunt', 'jshint:sub', 'concat', 'jshint:build', 'uglify']);
-    grunt.registerTask('test', function() {
-        require('./test/tests');
-    });
+    grunt.registerTask('default', ['jshint:grunt', 'jshint:sub', 'aok', 'concat', 'jshint:build', 'uglify']);
 };

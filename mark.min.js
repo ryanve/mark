@@ -1,5 +1,5 @@
 /*!
- * mark 0.8.0+201310190808
+ * mark 0.8.1+201310240204
  * https://github.com/ryanve/mark
  * MIT License 2013 Ryan Van Etten
  */

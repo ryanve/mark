@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        aok: ['./test/tests'],
+        aok: ['./test/'],
         jshint: {
             // gruntjs.com/configuring-tasks#globbing-patterns
             // **/** matches in current and sub dirs

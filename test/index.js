@@ -1,6 +1,6 @@
 (function(root) {
     var common = typeof module != 'undefined' && !!module.exports
-      , mark = common ? require('../src/mark') : root.mark
+      , mark = common ? require('../src') : root.mark
       , aok = common ? require('../node_modules/aok') : root.aok
       , doc = typeof document != 'undefined' && document
       , docElem = doc.documentElement

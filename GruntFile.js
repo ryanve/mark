@@ -31,7 +31,7 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    '<%= pkg.name %>.js': ['src/<%= pkg.name %>.js']
+                    '<%= pkg.name %>.js': ['src/index.js']
                 }
             }
         },

@@ -1,6 +1,6 @@
 !function(root, name, make) {
-    if (typeof module != 'undefined' && module['exports']) module['exports'] = make.call(root);
-    else root[name] = make.call(root);
+    if (typeof module != 'undefined' && module['exports']) module['exports'] = make();
+    else root[name] = make();
 }(this, 'mark', function() {
     
     var key = 'key', instances = 0;

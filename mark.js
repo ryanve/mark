@@ -1,12 +1,12 @@
 /*!
- * mark 0.8.2+201310240350
+ * mark 0.8.2+201310240359
  * https://github.com/ryanve/mark
  * MIT License 2013 Ryan Van Etten
  */
 
 !function(root, name, make) {
-    if (typeof module != 'undefined' && module['exports']) module['exports'] = make.call(root);
-    else root[name] = make.call(root);
+    if (typeof module != 'undefined' && module['exports']) module['exports'] = make();
+    else root[name] = make();
 }(this, 'mark', function() {
     
     var key = 'key', instances = 0;

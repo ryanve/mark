@@ -4,6 +4,7 @@
       , aok = common ? require('../node_modules/aok') : root.aok
       , doc = typeof document != 'undefined' && document
       , docElem = doc.documentElement
+      , globe = this
       , plain = {}
       , array = []
       , noop = function() {}
@@ -21,9 +22,9 @@
         return r;
     }
     
-    function diff(o, fn, scope) {
+    function diff(o, fn, scope, args) {
         var before = enums(o).join();
-        fn.call(scope);
+        fn.apply(scope, args || []);
         return enums(o).join() !== before;
     }
     
@@ -67,5 +68,8 @@
             mark.unmark(o);
             return !mark.marker(o) && !diff(o, mark.mark);
         })
+      }, {
+        id:'scope', 
+        test:!globe || !diff(globe, mark.prototype.mark, globe, [plain])
       }], aok);
 }(this));

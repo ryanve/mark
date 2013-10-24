@@ -3,7 +3,7 @@
     else root[name] = make();
 }(this, 'mark', function() {
     
-    var key = 'key', instances = 0;
+    var key = 'key', instances = 0, globe = this;
 
     /**
      * @this {Mark}
@@ -27,7 +27,7 @@
         var i = search.call(this, o);
         if (i) return i;
         if (o && 1 === o.nodeType) o.setAttribute(this[key], i=this.length++); // Skip index.
-        else if (o === o) this[i=this.length++] = o; // Search only finds reflexive items.
+        else if (o === o && this != globe) this[i=this.length++] = o;
         return i;
     }
 

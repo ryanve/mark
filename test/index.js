@@ -22,9 +22,9 @@
     }
     
     function diff(o, fn, scope) {
-        var before = enums(o).length;
+        var before = enums(o).join();
         fn.call(scope);
-        return enums(o).length - before;
+        return enums(o).join() !== before;
     }
     
     function every(stack, fn, scope) {

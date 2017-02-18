@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<meta charset="utf-8">
+<title>mark: JavaScript object tracking module</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: Yellow;
+  color: Navy;
+}
+
+:link,
+:visited {
+  color: Yellow;
+}
+
+:link:hover,
+:visited:hover {
+  color: GreenYellow;
+  outline-color: GreenYellow;
+}
+
+:focus {
+  outline-color: Yellow;
+}
+
+html {
+  background: RoyalBlue;
+  color: WhiteSmoke;
+  font: 1.125em/1.55 sans-serif;
+}
+
+body {
+  padding: 1rem;
+  width: 100%;
+  margin: auto;
+  word-wrap: break-word;
+}
+
+figure {
+  display: block;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+pre {
+  white-space: pre-line;
+}
+
+p code {
+  font-weight: bold;
+}
+
+h1 {
+  margin-top: 0;
+  line-height: 1;
+}
+
+@media (max-width: 20em) {
+  html {
+    font-size: 1em;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+}
+</style>
+
+<h1>mark</h1>
+<p>JavaScript object tracking module</p>
+<a href="https://github.com/ryanve/mark">Github</a>
+<a href="https://www.npmjs.com/package/mark">npm</a>
+
+<p>Try <code>mark</code> in the console :)</p>
+
+<figure><pre><code><b>mark.mark(object)</b> // Add/get <abbr title="unique identifier">uid</abbr>
+<b>mark.marker(object)</b> // Get <abbr title="unique identifier">uid</abbr>
+<b>mark.unmark(object)</b> // Purge <abbr title="unique identifier">uid</abbr>
+</code></pre></figure>
+
+<p role="status"><b>Tests:</b> <span data-status></span></p>
+
+<script src="mark.js"></script>
+<script src="test.js"></script>

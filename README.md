@@ -1,23 +1,20 @@
-# [mark](../../)
-
+# mark
 #### Safe unobtrusive JavaScript tracking system
 
-```sh
-$ npm install mark
+```
+npm install mark
 ```
 
-## API ([0.8](../../releases))
+## API
 
 ```js
-mark.mark(item) // Add/get uid.
-mark.marker(item) // Get uid.
-mark.unmark(item) // Purge uid.
+mark.mark(object) // Add/get uid
+mark.marker(object) // Get uid
+mark.unmark(object) // Purge uid
 ```
 
 ## Trackables
-
 Any object or function can be tracked. Elements are tracked via data attribute.
 
-## [MIT License](http://en.wikipedia.org/wiki/MIT_License)
-
-Copyright (C) 2012 by [Ryan Van Etten](https://github.com/ryanve)
+## License
+MIT

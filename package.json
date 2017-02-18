@@ -1,21 +1,38 @@
 {
-    "name": "mark",
-    "description": "unobtrusive object tracking system",
-    "version": "0.8.2",
-    "homepage": "https://github.com/ryanve/mark",
-    "license": "MIT",
-    "author": "Ryan Van Etten",
-    "keywords": ["uid", "track", "tracking", "marker", "dom", "nodes", "ender"],
-    "main": "./mark.js",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ryanve/mark.git"
-    },
-    "devDependencies": {
-        "grunt": "~0.4.1",
-        "grunt-contrib-uglify": "~0.2.4",
-        "grunt-contrib-concat": "~0.3.0",
-        "grunt-contrib-jshint": "~0.6.4",
-        "aok": "~1.5"
-    }
+  "name": "mark",
+  "description": "Unobtrusive object tracking system",
+  "version": "0.8.2",
+  "license": "MIT",
+  "author": "Ryan Van Etten",
+  "main": "mark.js",
+  "scripts": {
+    "lint": "eslint . --ext .js",
+    "preversion": "npm test",
+    "pretest": "npm run lint",
+    "test": "node test.js"
+  },
+  "homepage": "https://github.com/ryanve/mark",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryanve/mark.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ryanve/mark/issues"
+  },
+  "keywords": [
+    "uid",
+    "uuid",
+    "guid",
+    "identifier",
+    "object",
+    "track",
+    "tracking",
+    "marker",
+    "javascript",
+    "dom",
+    "nodes"
+  ],
+  "devDependencies": {
+    "eslint": "^3.15.0"
+  }
 }

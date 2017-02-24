@@ -2,19 +2,24 @@
 #### Safe unobtrusive JavaScript tracking system
 
 ```
-npm install mark
+npm install mark --save
 ```
 
-## API
+## Usage
 
 ```js
-mark.mark(object) // Add/get uid
-mark.marker(object) // Get uid
-mark.unmark(object) // Purge uid
+var mark = require('mark')
+var instance = mark()
+instance.mark(object) // Set uid
+instance.marker(object) // Get uid
+instance.unmark(object) // Delete uid
 ```
 
 ## Trackables
-Any object or function can be tracked. Elements are tracked via data attribute.
+Any object or function can be tracked.
+
+## Compatibility
+Works in Node.js and modern (ES5) web browsers
 
 ## License
 MIT

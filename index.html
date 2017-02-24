@@ -79,9 +79,10 @@ h1 {
 
 <p>Try <code>mark</code> in the console :)</p>
 
-<figure><pre><code><b>mark.mark(object)</b> // Add/get <abbr title="unique identifier">uid</abbr>
-<b>mark.marker(object)</b> // Get <abbr title="unique identifier">uid</abbr>
-<b>mark.unmark(object)</b> // Purge <abbr title="unique identifier">uid</abbr>
+<figure><pre><code><b>var instance = mark()</b>
+<b>instance.mark(object)</b> // Set <abbr title="unique identifier">uid</abbr>
+<b>instance.marker(object)</b> // Get <abbr title="unique identifier">uid</abbr>
+<b>instance.unmark(object)</b> // Delete <abbr title="unique identifier">uid</abbr>
 </code></pre></figure>
 
 <p role="status"><b>Tests:</b> <span data-status></span></p>

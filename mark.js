@@ -3,78 +3,62 @@
   else root[name] = make()
 }(this, 'mark', function() {
 
-  var key = 'key'
-  var instances = 0
-  var globe = this
+  var stamp = Date.now()
+  var count = incrementer(0)
+  var model = mark.prototype
 
-  /**
-   * @this {Mark}
-   * @param {*=} needle
-   * @return {number}
-   */
-  function search(needle) {
-    if (needle && 1 === needle.nodeType) return +needle.getAttribute(this[key]) || 0
-    // Search in reverse to speed access to recent items.
-    // Stop iterations at index [1] because [0] is unused.
-    for (var i = this.length; 0 < i--;) if (i in this && needle === this[i]) return i
-    return 0
-  }
-
-  /**
-   * @this {Mark}
-   * @param {*=} o
-   * @return {number}
-   */
-  function admit(o) {
-    var i = search.call(this, o)
-    if (i) return i
-    if (o && 1 === o.nodeType) o.setAttribute(this[key], i=this.length++) // Skip index.
-    else if (o === o && this != globe) this[i = this.length++] = o
-    return i
-  }
-
-  /**
-   * @this {Mark}
-   * @param {*=} o
-   * @return {undefined}
-   */
-  function remit(o) {
-    var i
-    if (o && 1 === o.nodeType) o.removeAttribute(this[key])
-    else if (i = search.call(this, o)) delete this[i]
-  }
-
-  /**
-   * @constructor
-   */
-  function Mark() {
-    this.length = 1 // Index 0 stays sparse.
-    this[key] = 'data-marker-' + instances++
-  }
-
-  /**
-   * @param {*=} o
-   * @return {Mark}
-   */
-  function mark(o) {
-    return o instanceof Mark ? o : new Mark
-  }
-
-  mark.prototype = Mark.prototype
-  Mark.prototype['mark'] = admit
-  Mark.prototype['unmark'] = remit
-  Mark.prototype['marker'] = search
-
-  !function(instance) {
-    function bind(fn, scope) {
-      return function() {
-        return fn.apply(scope, arguments)
-      }
+  function incrementer(uid) {
+    return function() {
+      return ++uid
     }
-    mark['mark'] = bind(admit, instance)
-    mark['unmark'] = bind(remit, instance)
-    mark['marker'] = bind(search, instance)
-  }(mark())
+  }
+
+  function set(object, key, details) {
+    Object.defineProperty(object, key, details)
+    return details.value
+  }
+
+  function has(object, key) {
+    return object.hasOwnProperty(key)
+  }
+
+  function mark() {
+    var instance = this instanceof mark ? this : new mark
+    has(instance, 'uid') || set(instance, 'uid', {
+      get: incrementer(0)
+    })
+    has(instance, 'key') || set(instance, 'key', {
+      value: 'mark-' + stamp + '-instance-' + count()
+    })
+    return instance
+  }
+
+  function isMark(object) {
+    return object instanceof mark
+  }
+
+  function isMarkable(object) {
+    return object === Object(object)
+  }
+
+  model.marker = function(object) {
+    if (!isMark(this)) throw new Error('this')
+    return object[this.key]
+  }
+
+  model.mark = function(object) {
+    if (!isMark(this)) throw new Error('this')
+    if (!isMarkable(object)) throw new Error('unmarkable')
+    return this.marker(object) || set(object, this.key, {
+      configurable: true,
+      value: this.uid
+    })
+  }
+
+  model.unmark = function(object) {
+    if (!isMark(this)) throw new Error('this')
+    delete object[this.key]
+  }
 
   return mark
 });

@@ -9,7 +9,7 @@ npm install mark --save
 
 ```js
 var mark = require('mark')
-var instance = mark()
+var instance = mark() // Create instance
 instance.mark(object) // Set uid
 instance.marker(object) // Get uid
 instance.unmark(object) // Delete uid
